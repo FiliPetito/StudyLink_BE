@@ -18,6 +18,7 @@ public class User {
     private long userId;
     @Column(unique = true, length = 20)
     private String username;
+    private String email;
     private String password;
     
     @ManyToMany(fetch = FetchType.EAGER)
@@ -27,6 +28,14 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public long getUserId() {
 		return userId;
@@ -59,6 +68,11 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-    
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", roles=" + roles + "]";
+	}
     
 }

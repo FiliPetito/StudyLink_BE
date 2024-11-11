@@ -23,7 +23,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final UserService userService = new UserService();
 
     @PostMapping("/register")
     public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto, HttpSession session, HttpServletRequest request) {

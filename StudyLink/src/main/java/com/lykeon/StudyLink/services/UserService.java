@@ -5,6 +5,7 @@ import com.lykeon.StudyLink.entities.User;
 import com.lykeon.StudyLink.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,11 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class UserService {
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+	@Autowired
+    private UserRepository userRepository;
+	@Autowired
+    private PasswordEncoder passwordEncoder;
 
     public ResponseEntity<UserDto> saveUser(UserDto dto) {
         User entity = new User();

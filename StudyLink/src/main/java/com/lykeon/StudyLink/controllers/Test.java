@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/api/test")
 public class Test {
 
     @GetMapping("/private")

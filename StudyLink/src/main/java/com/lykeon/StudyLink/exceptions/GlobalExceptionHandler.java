@@ -15,17 +15,17 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleException
-            (Exception exception, WebRequest webRequest) {
-        Map<String, Object> body = new HashMap<>();
-        body.put("code", HttpStatus.BAD_REQUEST.value());
-        body.put("timestamp", LocalDateTime.now());
-        body.put("message", exception.getMessage());
-        body.put("path", webRequest.getContextPath());
-        body.put("sessionId", webRequest.getSessionId());
-        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<?> handleException
+//            (Exception exception, WebRequest webRequest) {
+//        Map<String, Object> body = new HashMap<>();
+//        body.put("code", HttpStatus.BAD_REQUEST.value());
+//        body.put("timestamp", LocalDateTime.now());
+//        body.put("message", exception.getMessage());
+//        body.put("path", webRequest.getContextPath());
+//        body.put("sessionId", webRequest.getSessionId());
+//        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+//    }
 
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<?> handleBadCredentialsException
