@@ -1,11 +1,6 @@
 package com.lykeon.StudyLink.response;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
-
-import com.lykeon.StudyLink.controllers.HashMap;
-import com.lykeon.StudyLink.controllers.Map;
 
 public class DefaultResponse<T>{
 

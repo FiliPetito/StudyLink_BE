@@ -25,14 +25,14 @@ public class UserController {
 
     private final UserService userService = new UserService();
 
-    @PostMapping("/register")
-    public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto, HttpSession session, HttpServletRequest request) {
-        if (Objects.isNull(userDto)) {
-            throw new InvalidPayloadException("Payload cannot be Null");
-        }
-        if(userService.findByUsername(userDto.getUsername())){
-            throw new UserIdAlreadyExistException("Username is already taken");
-        }
-        return userService.saveUser(userDto);
-    }
+//    @PostMapping("/register")
+//    public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto, HttpSession session, HttpServletRequest request) {
+//        if (Objects.isNull(userDto)) {
+//            throw new InvalidPayloadException("Payload cannot be Null");
+//        }
+//        if(userService.findByUsername(userDto.getUsername())){
+//            throw new UserIdAlreadyExistException("Username is already taken");
+//        }
+//        return userService.saveUser(userDto);
+//    }
 }

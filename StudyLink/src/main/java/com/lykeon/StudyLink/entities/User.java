@@ -1,5 +1,6 @@
 package com.lykeon.StudyLink.entities;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -18,8 +19,14 @@ public class User {
     private long userId;
     @Column(unique = true, length = 20)
     private String username;
+    @Column(unique = true)
     private String email;
     private String password;
+    
+    private String firstName;
+	private String lastName;
+	private String gender;
+	private LocalDateTime birthday;
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -27,6 +34,7 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
+    
     private Set<Role> roles;
 
 	public String getEmail() {
@@ -69,10 +77,43 @@ public class User {
 		this.roles = roles;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public LocalDateTime getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(LocalDateTime birthday) {
+		this.birthday = birthday;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", roles=" + roles + "]";
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender + ", birthday="
+				+ birthday + ", roles=" + roles + "]";
 	}
     
 }

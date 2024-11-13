@@ -74,4 +74,40 @@ public class GlobalExceptionHandler {
         body.put("sessionId", webRequest.getSessionId());
         return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
     }
+    
+    @ExceptionHandler(EmailAlreadyExistException.class)
+    public ResponseEntity<?> handleEmailAlreadyExistException
+            (EmailAlreadyExistException emailAlreadyExistException, WebRequest webRequest) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("code", "emailAlreadyExist");
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", emailAlreadyExistException.getMessage());
+        body.put("path", webRequest.getContextPath());
+        body.put("sessionId", webRequest.getSessionId());
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
+    
+    @ExceptionHandler(UsernameAlreadyExistException.class)
+    public ResponseEntity<?> handleUsernameAlreadyExistException
+            (UsernameAlreadyExistException usernameAlreadyExistException, WebRequest webRequest) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("code", "usernameAlreadyExist");
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", usernameAlreadyExistException.getMessage());
+        body.put("path", webRequest.getContextPath());
+        body.put("sessionId", webRequest.getSessionId());
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
+    
+    @ExceptionHandler(InvalidPasswordException.class)
+    public ResponseEntity<?> handleInvalidPasswordException
+            (InvalidPasswordException invalidPasswordException, WebRequest webRequest) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("code", "invalidPassword");
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", invalidPasswordException.getMessage());
+        body.put("path", webRequest.getContextPath());
+        body.put("sessionId", webRequest.getSessionId());
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
 }
